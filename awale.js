@@ -8,25 +8,23 @@ const makeAPlay = (holeNumber) => {
     let holeNumberToFill;
     board[holeNumber] = 0;
     while (numberOfSeedsInHole > 0) {
-        holeNumberToFill = holeNumber + 1;
-        if (holeNumber === 11){
-            holeNumberToFill = 0;
-        }
+        holeNumberToFill = holeNumber + 1 % 12;
         board[holeNumberToFill] += numberOfSeedsInHole;
         numberOfSeedsInHole--;
     }
-    checkCapturableSeeds(holeNumberToFill);
+    CountPoints(holeNumberToFill);
 }
 
-const checkCapturableSeeds = (lastHoleNumber) => {
+const CountPoints = (lastHoleNumber) => {
     let lastHoleToCheck;
-    let currentPlayerNumber;
-    if([0,1,2,3,4,5].includes(lastHoleNumber)) {
+    let currentPlayer;
+    const player1BoardSide = [0,1,2,3,4,5]
+    if(player1BoardSide.includes(lastHoleNumber)) {
         lastHoleToCheck = 0;
-        currentPlayerNumber = 1;
+        currentPlayer = 1;
     } else {
         lastHoleToCheck = 6;
-        currentPlayerNumber = 0;
+        currentPlayer = 0;
     }
 
     let currentHoleToCheck = lastHoleNumber;
@@ -36,7 +34,7 @@ const checkCapturableSeeds = (lastHoleNumber) => {
         if (currentHoleCount > 3 || currentHoleCount < 2) {
             break;
         }
-        if (currentPlayerNumber === 0){
+        if (currentPlayer === 0){
             player0SeedCount += currentHoleCount;
         } else {
             player1SeedCount += currentHoleCount;
@@ -46,8 +44,8 @@ const checkCapturableSeeds = (lastHoleNumber) => {
     }
 }
 
-const checkStarvation = (currentPlayerNumber) => {
-    if (currentPlayerNumber = 0) {
+const checkStarvation = (currentPlayer) => {
+    if (currentPlayer = 0) {
         for(i=6; i < 12; i++) {
             if (board[i] != 0)
                 return false
@@ -62,10 +60,6 @@ const checkStarvation = (currentPlayerNumber) => {
     }
 }
 
-const checkWinningCondition = () => {
+const checkPlayableCondition = (currentPlayer) => {
     
-}
-
-const checkPlayableCondition = () => {
-
 }
