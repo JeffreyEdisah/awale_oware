@@ -12,7 +12,6 @@ const playTheGame = () => {
     initializeBoard;
     //Start gameplay loop
     while(!isGameOver) {
-        //Board Display Function
         let holeNumberToPlayFrom = prompt("Quel trou pour jouer le coup ?");
         if(checkStarvation(currentPlayer)) {
             if(isThereAPlayableMove(currentPlayer)){
