@@ -3,8 +3,8 @@ let board;
 let player0SeedCount;
 let player1SeedCount;
 
-const player0BoardSide = [0,1,2,3,4,5];
-const player1BoardSide = [6,7,8,9,10,11];
+let player0BoardSide = [0,1,2,3,4,5] 
+let player1BoardSide = [6,7,8,9,10,11]
 
 const playTheGame = () => {
     //Choose first player randomly
@@ -48,7 +48,6 @@ const makeAPlay = (holeNumber) => {
 const countPoints = (lastHoleNumber) => {
     let lastHoleToCheck;
     let currentPlayer;
-    const player1BoardSide = [0,1,2,3,4,5];
     if(player1BoardSide.includes(lastHoleNumber)) {
         lastHoleToCheck = 0;
         currentPlayer = 1;
@@ -60,7 +59,7 @@ const countPoints = (lastHoleNumber) => {
     let currentHoleToCheck = lastHoleNumber
 
     while(currentHoleToCheck >= lastHoleToCheck){
-        currentHoleCount = board[currentHoleToCheck];
+        const currentHoleCount = board[currentHoleToCheck];
         if (currentHoleCount > 3 || currentHoleCount < 2) {
             break;
         }
@@ -75,14 +74,14 @@ const countPoints = (lastHoleNumber) => {
 }
 
 const checkStarvation = (currentPlayer) => {
-    if (currentPlayer = 0) {
-        for(i=6; i < 12; i++) {
+    if (currentPlayer == 0) {
+        for(let i=6; i < 12; i++) {
             if (board[i] != 0)
                 return false;
         }
         return true;
     } else {
-        for(i=0; i < 6; i++) {
+        for(let i=0; i < 6; i++) {
             if (board[i] != 0)
                 return false;
         }
@@ -91,7 +90,7 @@ const checkStarvation = (currentPlayer) => {
 }
 
 const checkPlayable = (holeNumber) => {
-    numberOfSeeds = board[holeNumber];
+    const numberOfSeeds = board[holeNumber];
     return numberOfSeeds >= 6 - holeNumber % 6;
 }
 
@@ -101,7 +100,7 @@ const isGameOver = () => {
 
 const isThereAPlayableMove = (currentPlayer) => {
     const playerBoardSide = currentPlayer == 0 ? player0BoardSide : player1BoardSide;
-    for (hole of playerBoardSide) {
+    for (const hole of playerBoardSide) {
         if (checkPlayable(hole)) {
             return true;
         }
@@ -110,11 +109,11 @@ const isThereAPlayableMove = (currentPlayer) => {
 }
 
 const emptyBoard = () => {
-    for(hole of player0BoardSide) {
+    for(const hole of player0BoardSide) {
         player0SeedCount += board[hole];
         board[hole] = 0;
     }
-    for(hole of player1BoardSide) {
+    for(const hole of player1BoardSide) {
         player1SeedCount += board[hole];
         board[hole] = 0;
     }

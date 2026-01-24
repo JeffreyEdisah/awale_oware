@@ -1,0 +1,26 @@
+{
+  "name": "awale_oware",
+  "version": "1.0.0",
+  "description": "",
+  "main": "awale.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JeffreyEdisah/awale_oware.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/JeffreyEdisah/awale_oware/issues"
+  },
+  "homepage": "https://github.com/JeffreyEdisah/awale_oware#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "eslint": "^9.39.2",
+    "globals": "^17.1.0"
+  }
+}
